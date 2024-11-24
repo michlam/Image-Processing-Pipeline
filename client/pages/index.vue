@@ -1,6 +1,5 @@
 <template>
   <div class="min-h-screen bg-gray-100 flex flex-col items-center justify-center px-4">
-    <!-- Breadcrumb/Title -->
     <nav class="text-sm text-gray-500 mb-4">
       <span class="font-medium">Home</span> › License Plate Recognition
     </nav>
@@ -32,7 +31,7 @@
         </div>
         <div>
           <button
-            class="bg-white text-purple-500 px-4 py-2 font-semibold rounded-md shadow-md hover:bg-purple-100 mb-2 flex items-center"
+            class="bg-white text-purple-500 px-2 py-2 font-semibold rounded-md shadow-md hover:bg-purple-100 mb-2 flex items-center"
           >
             <div style="width:24px;height:24px">
               <img src="public/upload-icon.svg" alt="Upload Icon" class="h-full w-full" />
@@ -43,9 +42,9 @@
         <p class="text-sm text-gray-700">or drag and drop your images here</p>
       </div> 
       
-      <div v-if="imagePreviewUrl">
+      <div v-if="imagePreviewUrl" class="flex flex-col items-center justify-center text-center">
         <!-- Image Preview Section -->
-        <div class="mt-6 text-center h-24 w-24 relative mb-3 mt-3" >
+        <div class="mt-4 text-center h-24 w-24 relative mb-2 mt-3" >
           <img
             :src="imagePreviewUrl" v-if="imagePreviewUrl"
             alt="Preview"
@@ -61,9 +60,12 @@
         </div>
         <nuxt-link to="/results">
           <button
-            class="bg-white text-purple-500 px-4 py-2 font-semibold rounded-md shadow-md hover:bg-purple-100 mb-2 flex items-center"
+            class="bg-white text-purple-500 px-3 py-2 font-semibold rounded-md shadow-md hover:bg-purple-100 mb-2 flex items-center"
           >
-            UPLOAD
+            <div style="width:24px;height:24px">
+              <img src="public/cloud-upload-icon.svg" alt="Upload Icon" class="h-full w-full" />
+            </div>
+            <span class="ml-1">UPLOAD</span>
           </button>
         </nuxt-link>
         
