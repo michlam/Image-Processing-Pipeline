@@ -8,13 +8,13 @@
 
     <!-- Upload Area -->
     <div
-      class="relative w-full max-w-xl bg-purple-200 border-dashed border-2 border-purple-400 rounded-lg p-6 flex flex-col items-center justify-center text-center hover:bg-purple-300"
+      class="relative w-full h-44 max-w-xl bg-purple-200 border-dashed border-2 border-purple-400 rounded-lg p-6 flex flex-col items-center justify-center text-center hover:bg-purple-300"
       @click="triggerFileInput"
       @dragover.prevent="handleDragOver"
       @dragleave.prevent="handleDragLeave"
       @drop.prevent="handleDrop"
       :class="{
-        'bg-purple-300': isDragOver
+        'bg-purple-300': isDragOver || imagePreviewUrl
       }"
     >
     <input
@@ -23,6 +23,7 @@
         accept="image/*"
         class="hidden"
         @change="onFileChange"
+        v-if="!imagePreviewUrl"
       />
       
       <div class="flex flex-col items-center justify-center text-center" v-if="!imagePreviewUrl">
@@ -42,25 +43,33 @@
         <p class="text-sm text-gray-700">or drag and drop your images here</p>
       </div> 
       
-      <!-- Image Preview Section -->
-      <div v-if="imagePreviewUrl" class="mt-6 text-center" >
-        <!-- <p class="text-gray-600 mb-4">Image Preview:</p> -->
-         <!-- Close Button -->
-        <button
-          @click="removeImage"
-          class="absolute top-2 left-2 bg-white text-gray-700 border border-gray-300 rounded-full h-8 w-8 flex items-center justify-center shadow-md hover:bg-gray-100"
-          title="Remove Image"
-        >
-          ✕
-        </button>
-        <img
-          :src="imagePreviewUrl" v-if="imagePreviewUrl"
-          alt="Preview"
-          class="max-w-full h-64 object-contain rounded-md shadow-md"
-        />
+      <div v-if="imagePreviewUrl">
+        <!-- Image Preview Section -->
+        <div class="mt-6 text-center h-24 w-24 relative mb-3 mt-3" >
+          <img
+            :src="imagePreviewUrl" v-if="imagePreviewUrl"
+            alt="Preview"
+            class="object-cover w-full h-full object-cover rounded-md"
+          />
+          <button
+            @click="removeImage"
+            class="absolute top-0 left-0 bg-white text-gray-600 border border-gray-300 rounded-full h-5 w-5 flex items-center justify-center shadow-md hover:bg-gray-100 text-xs"
+            title="Remove Image"
+          >
+            ✕
+          </button>
+        </div>
+        <nuxt-link to="/results">
+          <button
+            class="bg-white text-purple-500 px-4 py-2 font-semibold rounded-md shadow-md hover:bg-purple-100 mb-2 flex items-center"
+          >
+            UPLOAD
+          </button>
+        </nuxt-link>
+        
       </div>
+      
     </div>
-
 
     <!-- Description Section -->
     <div class="mt-6 text-center">
@@ -121,6 +130,11 @@ export default {
       };
       reader.readAsDataURL(file); // Convert file to data URL for preview
     },
+    removeImage(event) {
+      event.stopPropagation();
+      this.imagePreviewUrl = "";
+      this.selectedFile = null;
+    }
   },
 };
 </script>
