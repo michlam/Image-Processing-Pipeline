@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen bg-gray-100 flex flex-col items-center justify-center px-4">
     <nav class="text-sm text-gray-500 mb-4">
-      <span class="font-medium">Home</span> › License Plate Recognition
+      <span class="font-medium">Home</span>
     </nav>
     <h1 class="text-3xl font-bold text-gray-800 mb-6">Upload and Recognize License Plates</h1>
 
@@ -52,7 +52,7 @@
           />
           <button
             @click="removeImage"
-            class="absolute top-0 left-0 bg-white text-gray-600 border border-gray-300 rounded-full h-5 w-5 flex items-center justify-center shadow-md hover:bg-gray-100 text-xs"
+            class="absolute top-[-6px] left-[-5px] bg-white text-gray-600 border border-gray-300 rounded-full h-5 w-5 flex items-center justify-center shadow-md hover:bg-gray-100 text-xs"
             title="Remove Image"
           >
             ✕
@@ -62,7 +62,7 @@
           <button
             class="bg-white text-purple-500 px-3 py-2 font-semibold rounded-md shadow-md hover:bg-purple-100 mb-2 flex items-center"
           >
-            <div style="width:24px;height:24px">
+            <div class="w-[24px] h-[24px]">
               <img src="public/cloud-upload-icon.svg" alt="Upload Icon" class="h-full w-full" />
             </div>
             <span class="ml-1">UPLOAD</span>
