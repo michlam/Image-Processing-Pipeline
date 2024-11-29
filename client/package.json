@@ -12,6 +12,7 @@
 		"nuxt": "^3.3.1"
 	},
 	"dependencies": {
-		"@types/node": "^18.15.3"
+		"@types/node": "^18.15.3",
+		"axios": "^1.7.8"
 	}
 }
