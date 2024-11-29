@@ -2,6 +2,8 @@ import json
 import boto3
 import time
 import os
+import base64
+import uuid
 
 def lambda_handler(event, context):
     print("test 1")
@@ -78,7 +80,7 @@ def lambda_handler(event, context):
     print(response)
 
     return {
-            'statusCode': 200,
-            'body': "Image processing complete"
+        'statusCode': 200,
+        'body': json.dumps('Processing complete')
     }
  
