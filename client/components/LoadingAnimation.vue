@@ -1,29 +1,29 @@
 <template>
-    <div class="grid grid-cols-4 gap-16 -ml-10 -mt-10">
+    <div class="grid grid-cols-4 gap-20 -ml-10 -mt-10">
         <div class="relative">
-            <div class="base-circle border border-gray-200"></div>
+            <div class="base-circle border-2 border-gray-300"></div>
             <div
-                class="coloured-spin border border-cyan-500">
+                class="coloured-spin border-2 border-purple-200">
             </div>
         </div>
 
         <div class="relative">
-            <div class="base-circle border-2 border-gray-200"></div>
+            <div class="base-circle border-4 border-gray-300"></div>
             <div
-                class="coloured-spin border-2 border-indigo-500">
+                class="coloured-spin border-4 border-purple-400">
             </div>
         </div>
 
         <div class="relative">
-            <div class="base-circle border-4 border-gray-200"></div>
+            <div class="base-circle border-8 border-gray-300"></div>
             <div
-                class="coloured-spin border-4 border-pink-500">
+                class="coloured-spin border-8 border-purple-600">
             </div>
         </div>
         <div class="relative">
-            <div class="base-circle border-8 border-gray-200"></div>
+            <div class="base-circle border-[16px] border-gray-300"></div>
             <div
-                class="coloured-spin border-8 border-green-500">
+                class="coloured-spin border-[16px] border-purple-800">
             </div>
         </div>
     </div>
@@ -37,9 +37,9 @@
 
 <style scoped>
     .coloured-spin {
-        @apply w-12 h-12 rounded-full animate-spin absolute border-t-transparent border-solid;
+        @apply w-14 h-14 rounded-full animate-spin absolute border-t-transparent border-solid;
     }
     .base-circle {
-        @apply w-12 h-12 rounded-full absolute border-solid;
+        @apply w-14 h-14 rounded-full absolute border-solid;
     }
 </style>

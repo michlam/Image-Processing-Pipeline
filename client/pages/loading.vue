@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-col items-center justify-center min-h-screen bg-gray-100">
       <h1 class="text-xl font-semibold mb-4">Processing...</h1>
-      <div class="mt-9">
+      <div class="mt-10 mb-3">
         <LoadingAnimation />
       </div>
       <p class="text-gray-500 mt-4">Please wait while we process your image.</p>
