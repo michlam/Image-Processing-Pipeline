@@ -87,6 +87,7 @@
 
 <script>
 import { useStore } from '@/store/store';
+import { useAccessStore } from '@/store/access';
 
 export default {
   data() {
@@ -144,7 +145,11 @@ export default {
       const base64 = this.imagePreviewUrl.split(',')[1]; 
       
       store.setImage(this.imagePreviewUrl, ext);
-      await navigateTo({ path: '/loading' });
+
+      const accessStore = useAccessStore();
+      const path = "/loading"
+      accessStore.grantAccess(path); 
+      await navigateTo({ path: path });
     }
   },
 };

@@ -12,7 +12,6 @@ export const useStore = defineStore('store', {
         this.image = image;
         this.ext = ext;
     },
-
     async pollResult(uploadId) {
         if (!uploadId) {
             throw new Error("No upload ID")

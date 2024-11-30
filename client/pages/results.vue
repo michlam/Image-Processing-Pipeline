@@ -60,6 +60,10 @@
 <script>
 import { useStore } from '../store/store';
 
+definePageMeta({
+  middleware: 'restrict',
+});
+
 export default {
   computed: {
     result() {

@@ -11,7 +11,12 @@
 <script>
     import LoadingAnimation from '../components/LoadingAnimation.vue';
     import { useStore } from '../store/store';
+    import { useAccessStore } from '../store/access';
     import upload from '../aws/upload';
+
+    definePageMeta({
+        middleware: 'restrict',
+    });
 
     export default {
         async mounted() {
@@ -22,7 +27,10 @@
             try { 
                 const success = await store.pollResult(uploadId);
                 if (success) {
-                    await navigateTo({ path: "/results"});
+                    const accessStore = useAccessStore();
+                    const path = "/results"
+                    accessStore.grantAccess(path); 
+                    await navigateTo({ path: path});
                 } else {
                     await navigateTo({ path: "/"});
                 }
