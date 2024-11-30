@@ -1,5 +1,4 @@
 import { defineStore } from 'pinia';
-import upload from '../aws/upload';
 import results from '../aws/results';
 
 export const useStore = defineStore('store', {
