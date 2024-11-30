@@ -10,14 +10,22 @@
 
 <script>
     import LoadingAnimation from '../components/LoadingAnimation.vue';
+    import { useStore } from '../store/store';
+
     export default {
-        computed: {
-            uploadId() {
-                return this.store.state.uploadId;
+        async mounted() {
+            const store = useStore(); 
+            console.log("Upload ID: ", store.uploadId);
+            try { 
+                const success = await store.pollResult();
+                if (success) {
+                    await navigateTo({ path: "/results"});
+                } else {
+                    await navigateTo({ path: "/"});
+                }
+            } catch(e) {
+                throw e;
             }
-        },
-        mounted() {
-            console.log("Upload ID: ", this.uploadId);
         }
     }
 </script>
