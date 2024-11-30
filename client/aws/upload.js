@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-export default async function upload(filename, image) {
+export default async function upload(ext, image) {
     const postBody = {
         image: image,
-        filename: filename
+        ext: ext
     }
 
     try {

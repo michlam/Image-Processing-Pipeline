@@ -15,7 +15,8 @@
     export default {
         async mounted() {
             const store = useStore(); 
-            console.log("Upload ID: ", store.uploadId);
+            await store.fetchUpload(store.ext, store.image.split(",")[1]);
+
             try { 
                 const success = await store.pollResult();
                 if (success) {

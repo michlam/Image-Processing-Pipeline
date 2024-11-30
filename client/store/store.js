@@ -4,16 +4,18 @@ import results from '../aws/results';
 
 export const useStore = defineStore('store', {
   state: () => ({
-    uploadId: "demo",
+    uploadId: null,
     result: null,
-    image: ""
+    image: "",
+    ext: ""
   }),
   actions: {
-    setImage(image) {
-        this.image = image
+    setImage(image, ext) {
+        this.image = image;
+        this.ext = ext;
     },
-    async fetchUpload(filename, image) {
-        this.uploadId = await upload(filename, image);
+    async fetchUpload(ext, image) {
+        this.uploadId = await upload(ext, image);
     },
     async pollResult() {
         if (!this.uploadId) {

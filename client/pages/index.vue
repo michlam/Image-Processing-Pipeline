@@ -42,8 +42,8 @@
         <p class="text-sm text-gray-700">or drag and drop your images here</p>
       </div> 
       
+      <!-- Image Preview Section -->
       <div v-if="imagePreviewUrl" class="flex flex-col items-center justify-center text-center">
-        <!-- Image Preview Section -->
         <div class="mt-4 text-center h-24 w-24 relative mb-2 mt-3" >
           <img
             :src="imagePreviewUrl" v-if="imagePreviewUrl"
@@ -58,20 +58,16 @@
             ✕
           </button>
         </div>
-        <!-- <nuxt-link to="/results"> -->
-          <button
-            class="bg-white text-purple-500 px-3 py-2 font-semibold rounded-md shadow-md hover:bg-purple-100 mb-2 flex items-center"
-            @click="uploadImage"
-          >
-            <div class="w-[24px] h-[24px]">
-              <img src="public/cloud-upload-icon.svg" alt="Upload Icon" class="h-full w-full" />
-            </div>
-            <span class="ml-1">UPLOAD</span>
-          </button>
-        <!-- </nuxt-link> -->
-        
+        <button
+          class="bg-white text-purple-500 px-3 py-2 font-semibold rounded-md shadow-md hover:bg-purple-100 mb-2 flex items-center"
+          @click="uploadImage"
+        >
+          <div class="w-[24px] h-[24px]">
+            <img src="public/cloud-upload-icon.svg" alt="Upload Icon" class="h-full w-full" />
+          </div>
+          <span class="ml-1">UPLOAD</span>
+        </button>
       </div>
-      
     </div>
 
     <!-- Description Section -->
@@ -91,8 +87,6 @@
 
 <script>
 import { useStore } from '@/store/store';
-
-import results from '../aws/results';
 
 export default {
   data() {
@@ -146,13 +140,11 @@ export default {
       event.stopPropagation();
 
       const store = useStore();
-      store.setImage(this.imagePreviewUrl);
+      const ext = this.selectedFile.name.split('.')[1]; 
       const base64 = this.imagePreviewUrl.split(',')[1]; 
-
-      await store.fetchUpload(this.selectedFile.name, base64);
-      await navigateTo({ path: '/loading' });
-
       
+      store.setImage(this.imagePreviewUrl, ext);
+      await navigateTo({ path: '/loading' });
     }
   },
 };
