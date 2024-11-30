@@ -8,10 +8,7 @@
     <!--Results-->
     <div class="items-center flex flex-col">
       <div class="w-36 h-36 mb-3">
-        <img 
-          class="object-cover w-full h-full object-cover rounded-md" 
-          src="https://avitek.vn/wp-content/uploads/2020/08/Image-Placeholder-Dark.png"
-        />
+        <img class="object-cover w-full h-full object-cover rounded-md" :src="image"/>
       </div>
 
       <div class="overflow-hidden rounded-lg border border-slate-300 shadow-lg">
@@ -25,15 +22,15 @@
           <tbody>
             <tr class="table-row">
               <td class="table-row-first-cell">License Plate</td>
-              <td class="table-row-cell">AAA 000</td>
+              <td class="table-row-cell">{{ result.plate }}</td>
             </tr>
             <tr class="table-row">
               <td class="table-row-first-cell">Region</td>
-              <td class="table-row-cell">North America</td>
+              <td class="table-row-cell">{{  result.region.trim() === "" ? "N/A" : result.region }}</td>
             </tr>
             <tr class="table-row">
               <td class="table-row-first-cell">Confidence</td>
-              <td class="table-row-cell">85%</td>
+              <td class="table-row-cell">{{ result.confidence.toFixed(2) }}%</td>
             </tr>
           </tbody>
         </table>
@@ -59,4 +56,21 @@
     @apply table-row-cell font-medium text-purple-500
   }
 </style>
+
+<script>
+import { useStore } from '../store/store';
+
+export default {
+  computed: {
+    result() {
+      const store = useStore();
+        return store.result;
+    },
+    image() {
+      const store = useStore();
+      return store.image;
+    }
+  }
+}
+</script>
 
