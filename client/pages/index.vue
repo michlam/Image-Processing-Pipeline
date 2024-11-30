@@ -58,16 +58,17 @@
             ✕
           </button>
         </div>
-        <nuxt-link to="/results">
+        <!-- <nuxt-link to="/results"> -->
           <button
             class="bg-white text-purple-500 px-3 py-2 font-semibold rounded-md shadow-md hover:bg-purple-100 mb-2 flex items-center"
+            @click="uploadImage"
           >
             <div class="w-[24px] h-[24px]">
               <img src="public/cloud-upload-icon.svg" alt="Upload Icon" class="h-full w-full" />
             </div>
             <span class="ml-1">UPLOAD</span>
           </button>
-        </nuxt-link>
+        <!-- </nuxt-link> -->
         
       </div>
       
@@ -89,6 +90,10 @@
 </template>
 
 <script>
+import { useStore } from '@/store/store';
+
+import results from '../aws/results';
+
 export default {
   data() {
     return {
@@ -136,11 +141,19 @@ export default {
       event.stopPropagation();
       this.imagePreviewUrl = "";
       this.selectedFile = null;
+    },
+    async uploadImage(event) {
+      event.stopPropagation();
+
+      const store = useStore();
+      store.setImage(this.imagePreviewUrl);
+      const base64 = this.imagePreviewUrl.split(',')[1]; 
+
+      await store.fetchUpload(this.selectedFile.name, base64);
+      await navigateTo({ path: '/loading' });
+
+      
     }
   },
 };
 </script>
-
-<style scoped>
-/* Add any additional styles here */
-</style>
