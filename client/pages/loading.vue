@@ -11,14 +11,16 @@
 <script>
     import LoadingAnimation from '../components/LoadingAnimation.vue';
     import { useStore } from '../store/store';
+    import upload from '../aws/upload';
 
     export default {
         async mounted() {
             const store = useStore(); 
-            await store.fetchUpload(store.ext, store.image.split(",")[1]);
+
+            const uploadId = await upload(store.ext, store.image.split(",")[1]);
 
             try { 
-                const success = await store.pollResult();
+                const success = await store.pollResult(uploadId);
                 if (success) {
                     await navigateTo({ path: "/results"});
                 } else {

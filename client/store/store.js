@@ -4,7 +4,6 @@ import results from '../aws/results';
 
 export const useStore = defineStore('store', {
   state: () => ({
-    uploadId: null,
     result: null,
     image: "",
     ext: ""
@@ -14,11 +13,9 @@ export const useStore = defineStore('store', {
         this.image = image;
         this.ext = ext;
     },
-    async fetchUpload(ext, image) {
-        this.uploadId = await upload(ext, image);
-    },
-    async pollResult() {
-        if (!this.uploadId) {
+
+    async pollResult(uploadId) {
+        if (!uploadId) {
             throw new Error("No upload ID")
         }
         const maxAttempts = 40;
@@ -27,9 +24,8 @@ export const useStore = defineStore('store', {
 
         await new Promise((resolve) => setTimeout(resolve, 30000)); 
         while (attempts < maxAttempts) {
-            this.result = await results(this.uploadId);
+            this.result = await results(uploadId);
             if (this.result) {
-                console.log(this.result);
                 return true;
             }
             attempts++;
