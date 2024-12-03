@@ -9,7 +9,7 @@ if [ -z "$S3_FILE_PATH" ]; then
 fi
 
 # copy file from s3 bucket to container
-if ! aws s3 cp "s3://openalpr-image-upload/$S3_FILE_PATH" "/data/$S3_FILE_PATH"; then
+if ! aws s3 cp "s3://openalpr-image-upload/images/$S3_FILE_PATH" "/data/$S3_FILE_PATH"; then
   echo "Error: init.sh failed to download file from S3"
   exit 1
 fi

@@ -48,9 +48,11 @@ def lambda_handler(event, context):
     dt_object = datetime.utcfromtimestamp(epoch_time_ms/1000)
     my_datetime = dt_object.strftime('%Y-%m-%d %H:%M:%S')
 
+    # hardcode the region for now
+
     returnJson = {
         "link": images_folder_s3_uri + latest_file_key[7:],
-        "region": json_data["results"][0]["region"],
+        "region": "North America"
         "plate": json_data["results"][0]["plate"],
         "confidence": json_data["results"][0]["confidence"],
         "datetime": my_datetime
