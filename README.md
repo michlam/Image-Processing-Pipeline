@@ -41,6 +41,7 @@ In order to test the application, upload an image of a vehicle with a license pl
 - The character recognition may not recognize your image, in which case you can use the test images found in this repository (openalpr/images). 
 
 Once the image is uploaded, the program will take about a minute to return its results.
+Note: We will remove services on December 16th to avoid incurring additional costs.
 
 ## Citations
 
