@@ -67,3 +67,18 @@ The web app should then be available on localhost.
 This project utilizes OpenALPR, a free open source library for license plate recognition. [Link](https://github.com/openalpr/openalpr)
 
 To use OpenALPR, we created a Docker image. In order to integrate with AWS, the image includes the AWS CLI installation and a script that generates our results.
+
+### Test Images
+- https://www.kaggle.com/datasets/gpiosenka/us-license-plates-image-classification
+- https://www.kaggle.com/datasets/abdelhamidzakaria/european-license-plates-dataset
+- https://www.theverge.com/tldr/2019/8/14/20805543/null-license-plate-california-parking-tickets-violations-void-programming-bug
+- https://commons.wikimedia.org/wiki/File:Car_with_export_license_plate_of_Finland.jpg
+- https://www.etsy.com/ca/listing/998923975/ukraine-euro-european-ukrainian-license
+- https://cyberworrier2000.medium.com/license-plate-recognition-using-opencv-python-e03dd591f083
+- https://www.kaggle.com/datasets/andrewmvd/car-plate-detection/code?datasetId=686454
+- https://olavsplates.com/canada_slow.html
+- https://en.wikipedia.org/wiki/Vehicle_registration_plates_of_Denmark
+
+
+
+
