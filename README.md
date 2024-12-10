@@ -9,7 +9,6 @@ Our project aims to implement an image processing pipeline thaat takes in images
 
 [Click here for a link to the project proposal.](https://docs.google.com/document/d/192WeYQOffhKELanuQ4ml_5SlDGZchOfY/edit?usp=sharing&ouid=114845963421172762607&rtpof=true&sd=true)
 
-
 ## List of Services Used
 
 ### Frontend
@@ -43,6 +42,23 @@ In order to test the application, upload an image of a vehicle with a license pl
 Once the image is uploaded, the program will take about a minute to return its results.
 
 Note: We will remove services on December 16th to avoid incurring additional costs.
+
+## Set up the container
+
+### Frontend
+
+To set up the container for the frontend, navigate to the client directory.
+A dockerfile exists in the directory, so we need to build the docker image in the command line:
+```
+docker buildx build --platform linux/amd64 --no-cache --provenance=false -t frontend-image-processing .
+```
+Once the docker image is made, we can run the docker image on port 3000:
+
+```
+docker run -p 3000:3000 frontend-image-processing
+```
+
+The web app should then be available on localhost.
 
 ## Citations
 
